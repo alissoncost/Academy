@@ -1,5 +1,6 @@
+#language: pt
 Funcionalidade: Acesso a page para realizar um end to end.
-
+@e2e
     Cenario: Finalizar uma compra com o usuario luma
         Dado que estou navegando na 'URL'
         E realizo acesso com 'user_luma'

@@ -1,8 +1,12 @@
 require 'rspec'
 require 'yaml'
 require 'pry'
- require 'capybara/cucumber'
- require 'capybara/poltergeist'
+require 'capybara'
+require 'capybara/cucumber'
+require 'capybara/poltergeist'
+require 'ffaker'
+require 'report_builder'
+require 'selenium-webdriver'
 
  if ENV['chrome']
    Capybara.default_driver = :chrome

@@ -1,3 +1,0 @@
-default: --no-source --color --format pretty
-
-chrome: -p default chrome=true

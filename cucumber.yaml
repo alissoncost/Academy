@@ -1,0 +1,4 @@
+---
+default: --format html --out=report/report.html --no-source --color --format pretty  
+
+chrome: -p default chrome=true luma=true
