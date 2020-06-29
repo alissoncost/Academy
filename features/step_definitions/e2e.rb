@@ -22,18 +22,21 @@ end
 
 Quando('avanço para o checkout') do
     click_link 'shopping cart', wait: 2
-    find(".action primary checkout").click :count => 4
+    sleep 2
+    click_button 'Proceed to Checkout', wait: 4
 end
 
 Quando('preencho os dados de Shipping') do
-    find("#T305KQH").set FFaker::AddressIN.street_address, :count => 4
-    find("#Q4CO18R").set FFaker::AddressIN.city
-    find("#G7S66Q0").set FFaker::AddressIN.state
-    find("#RCC1CIW").set FFaker::AddressIN.zip_code
-    select 'GIJ4DPB', from: 'Maldives'
-    find("#RV7XG2B").set FFaker::PhoneNumberAU.international_mobile_phone_number
-    click_button 'Next'
-    sleep 2
+    sleep 5
+    @WIP
+    # find("#GP2NNCE").set FFaker::AddressIN.street_address
+    # find("#JF8OFA4").set FFaker::AddressIN.city
+    # select 'BS7RN86', from: 'Arizona'
+    # find("#RCC1CIW").set FFaker::AddressIN.zip_code
+    # select 'GIJ4DPB', from: 'Maldives'
+    # find("#RV7XG2B").set FFaker::PhoneNumberAU.international_mobile_phone_number
+    # click_button 'Next'
+    # sleep 2
 end
 
 Quando('finalizo a compra') do
