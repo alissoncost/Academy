@@ -1,5 +1,7 @@
 Dado('que estou navegando na {string}') do |url|
-    visit 'https://magento.nublue.co.uk/'
+  url = DATA[url]
+  p url
+  visit(url)
 end
 
 Dado('realizo acesso com {string} e {string}') do |user, pass|
