@@ -7,7 +7,7 @@ Dado('realizo acesso com {string} e {string}') do |user, pass|
     find("#email").set user
     find("#pass").set pass
     click_button 'Sign In'
-    assert_text 'Veronica Costello'
+    assert_text 'Veronica Costello', wait: 4
 end
 
 Quando('adiciono o item {string} ao carrinho') do |item_search|
@@ -27,22 +27,25 @@ Quando('avanço para o checkout') do
 end
 
 Quando('preencho os dados de Shipping') do
+    assert_no_selector(".loader", wait:15)
+    find(:xpath,"//input[@name='street[0]']").set FFaker::AddressIN.street_address
+    find(:xpath,"//input[@name='city']").set FFaker::AddressIN.city
+    find(:xpath,"//select[@name='region_id']").click
+    select 'Arizona'
+    find(:xpath,"//input[@name='postcode']").set FFaker::AddressIN.zip_code
+    find(:xpath,"//select[@name='country_id']").click
+    select 'United States'
+    find(:xpath,"//input[@name='telephone']").set FFaker::PhoneNumberAU.international_mobile_phone_number
+    first(".radio").click
     sleep 5
-    @WIP
-    # find("#GP2NNCE").set FFaker::AddressIN.street_address
-    # find("#JF8OFA4").set FFaker::AddressIN.city
-    # select 'BS7RN86', from: 'Arizona'
-    # find("#RCC1CIW").set FFaker::AddressIN.zip_code
-    # select 'GIJ4DPB', from: 'Maldives'
-    # find("#RV7XG2B").set FFaker::PhoneNumberAU.international_mobile_phone_number
-    # click_button 'Next'
-    # sleep 2
+    click_button 'Next'
+    sleep 2
 end
 
 Quando('finalizo a compra') do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_button 'Place Order'
 end
 
 Então('vejo meu numero de pedido') do
-  pending # Write code here that turns the phrase above into concrete actions
+  assert_text 'Thank you for your purchase!'
 end
