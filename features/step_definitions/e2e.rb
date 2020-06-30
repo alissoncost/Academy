@@ -7,6 +7,7 @@ Dado('realizo acesso com {string} e {string}') do |user, pass|
     find("#email").set user
     find("#pass").set pass
     click_button 'Sign In'
+    sleep 1
     assert_text 'Veronica Costello', wait: 4
 end
 
@@ -28,24 +29,33 @@ end
 
 Quando('preencho os dados de Shipping') do
     assert_no_selector(".loader", wait:15)
-    find(:xpath,"//input[@name='street[0]']").set FFaker::AddressIN.street_address
-    find(:xpath,"//input[@name='city']").set FFaker::AddressIN.city
-    find(:xpath,"//select[@name='region_id']").click
-    select 'Arizona'
-    find(:xpath,"//input[@name='postcode']").set FFaker::AddressIN.zip_code
-    find(:xpath,"//select[@name='country_id']").click
-    select 'United States'
-    find(:xpath,"//input[@name='telephone']").set FFaker::PhoneNumberAU.international_mobile_phone_number
-    first(".radio").click
-    sleep 5
-    click_button 'Next'
-    sleep 2
+
+      if has_selector?(:xpath,"//button[@class='action action-show-popup']")
+        first(".radio").click
+        click_button 'Next'
+
+      else
+      find(:xpath,"//input[@name='street[0]']").set FFaker::AddressIN.street_address
+      find(:xpath,"//input[@name='city']").set FFaker::AddressIN.city
+      find(:xpath,"//select[@name='region_id']").click
+      select 'Arizona'
+      find(:xpath,"//input[@name='postcode']").set FFaker::AddressIN.zip_code
+      find(:xpath,"//select[@name='country_id']").click
+      select 'United States'
+      find(:xpath,"//input[@name='telephone']").set FFaker::PhoneNumberAU.international_mobile_phone_number
+      first(".radio").click
+      click_button 'Next'
+    end
+
 end
 
 Quando('finalizo a compra') do
-  click_button 'Place Order'
+  assert_no_selector(".loader", wait:15)
+  click_button 'Place Order', wait: 6
 end
 
+
 Então('vejo meu numero de pedido') do
-  assert_text 'Thank you for your purchase!'
+  assert_no_selector(".loader", wait:15)
+  assert_text 'Thank you for your purchase!', wait: 4
 end
