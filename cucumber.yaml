@@ -1,4 +1,10 @@
----
-default: --format html --out=report/report.html --no-source --color --format pretty  
-
-chrome: -p default chrome=true luma=true
+<% report_name = "report#{ENV['TEST_ENV_NUMBER']}" %>
+default:  -p format-default -p report-html -p report-json
+parallel: -p format-default -p report-html-parallel -p report-json-parallel
+qa-local: QA=true chrome=true screenshot=true -p default
+#-p = Profile
+format-default: --no-source --color --format pretty
+report-html:    --format html --out=data/report_default/report.html
+report-json:    --format json --out=data/report_default/report.json
+report-html-parallel: --format html --out data/report_default/report<%= ENV['TEST_ENV_NUMBER'] %>.html
+report-json-parallel: --format json --out data/report_default/report<%= ENV['TEST_ENV_NUMBER'] %>.json
