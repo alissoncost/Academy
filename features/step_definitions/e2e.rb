@@ -6,6 +6,8 @@ end
 
 Dado('realizo acesso com {string} e {string}') do |user, pass|
     click_link_or_button 'Sign In'
+    user = DATA[user]
+    pass = DATA[pass]
     find("#email").set user
     find("#pass").set pass
     click_button 'Sign In'
