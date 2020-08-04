@@ -7,6 +7,7 @@ require 'capybara/poltergeist'
 require 'ffaker'
 require 'report_builder'
 require 'selenium-webdriver'
+require 'png_quantizator'
 
  if ENV['chrome']
    Capybara.default_driver = :chrome

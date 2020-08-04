@@ -1,7 +1,7 @@
  source 'http://rubygems.org'
 
  gem 'capybara'
- gem 'cucumber'
+ gem 'cucumber', '3.1.2'
  gem 'ffaker'
  gem 'parallel_tests'
  gem 'poltergeist'
@@ -10,4 +10,4 @@
  gem 'report_builder'
  gem 'rspec'
  gem 'selenium-webdriver'
- 
+ gem 'png_quantizator'

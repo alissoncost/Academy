@@ -11,7 +11,7 @@
       include ScreenshotSetup
       include ReportConfig
   
-      def take_screenshot(scenario, condition = true)
+      def take_screenshot(scn)
         super
       end
   
