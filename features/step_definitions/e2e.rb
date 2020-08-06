@@ -27,7 +27,7 @@ end
 
 Quando('avanço para o checkout') do
     click_link 'shopping cart', wait: 2
-    sleep 2
+    sleep 3
     click_button 'Proceed to Checkout', wait: 4
 end
 
