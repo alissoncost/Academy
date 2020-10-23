@@ -1,65 +1,51 @@
 Dado('que estou navegando na {string}') do |url|
-  url = DATA[url]
-  p url
-  visit(url)
+        url = DATA[url]
+        p url
+        visit(url)
+        sleep 10
 end
 
 Dado('realizo acesso com {string} e {string}') do |user, pass|
-    click_link_or_button 'Sign In'
-    user = DATA[user]
-    pass = DATA[pass]
-    find("#email").set user
-    find("#pass").set pass
-    click_button 'Sign In'
-    sleep 1
-    assert_text 'Veronica Costello', wait: 4
+    @nav = Nav.new
+    @nav.login(user, pass)
+    
 end
 
 Quando('adiciono o item {string} ao carrinho') do |item_search|
-  find("#search").set item_search
-  click_button 'Search'
-  first(".product-item-link").click
-  find("#option-label-size-142-item-168").click
-  find("#option-label-color-93-item-52").click
-  find("#qty").set 2
-  click_button 'product-addtocart-button'
+  @nav = Nav.new
+  @nav.add_item_cart(item_search)
+  sleep 4
 end
 
 Quando('avanço para o checkout') do
-    click_link 'shopping cart', wait: 2
-    sleep 3
-    click_button 'Proceed to Checkout', wait: 4
+    @nav = Nav.new
+    @nav.access_checkout
 end
 
 Quando('preencho os dados de Shipping') do
-    assert_no_selector(".loader", wait:15)
+  @nav = Nav.new
+  @nav.valid_selector  
 
       if has_selector?(:xpath,"//button[@class='action action-show-popup']")
-        first(".radio").click
-        click_button 'Next'
+          @nav = Nav.new
+          @nav.valid_address_on
 
       else
-      find(:xpath,"//input[@name='street[0]']").set FFaker::AddressIN.street_address
-      find(:xpath,"//input[@name='city']").set FFaker::AddressIN.city
-      find(:xpath,"//select[@name='region_id']").click
-      select 'Arizona'
-      find(:xpath,"//input[@name='postcode']").set FFaker::AddressIN.zip_code
-      find(:xpath,"//select[@name='country_id']").click
-      select 'United States'
-      find(:xpath,"//input[@name='telephone']").set FFaker::PhoneNumberAU.international_mobile_phone_number
-      first(".radio").click
-      click_button 'Next'
+          @nav = Nav.new
+          @nav.valid_address_off
     end
 
 end
 
 Quando('finalizo a compra') do
-  assert_no_selector(".loader", wait:15)
+  @nav = Nav.new
+  @nav.valid_selector
   click_button 'Place Order', wait: 6
 end
 
 
 Então('vejo meu numero de pedido') do
-  assert_no_selector(".loader", wait:15)
+  @nav = Nav.new
+  @nav.valid_selector
   assert_text 'Thank you for your purchase!', wait: 4
 end

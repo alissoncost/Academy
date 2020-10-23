@@ -36,5 +36,5 @@ require 'png_quantizator'
  else
    Capybara.default_driver = :selenium
  end
- 
+#  Capybara.default_selector = :xpath
 
