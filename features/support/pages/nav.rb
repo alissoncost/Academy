@@ -1,11 +1,10 @@
 class Nav
     include Capybara::DSL
     
-    def visit(url)
+    def visits(url)
         url = DATA[url]
         p url
         visit(url)
-        sleep 10
     end
 
     def login(user, pass)

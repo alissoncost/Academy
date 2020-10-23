@@ -1,11 +1,9 @@
 
 Quando('entro para efetuar meu cadastro') do
-    @cadastro = Cadastro.new
     @cadastro.access_create_account
 end
 
 Quando('preencho os campos solicitados') do
-  @cadastro = Cadastro.new
   @cadastro.create_account
 end
 
