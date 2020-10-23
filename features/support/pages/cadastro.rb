@@ -6,14 +6,13 @@ class Cadastro
   end
 
   def create_account
-    find("#firstname").set FFaker::NameBR.first_name
-    find("#lastname").set FFaker::NameBR.last_name
-    find("#email_address").set FFaker::Internet.disposable_email
-    find("#password").set 'Teste123'
-    find("#password-confirmation").set 'Teste123'
+    find(EL["create_name"]).set FFaker::NameBR.first_name
+    find(EL["create_lastname"]).set FFaker::NameBR.last_name
+    find(EL["create_email"]).set FFaker::Internet.disposable_email
+    find(EL["create_pass"]).set 'Teste123'
+    find(EL["create_conf_pass"]).set 'Teste123'
     check 'is_subscribed'
-    click_button 'Create an Account'
+    click_button EL["bttn_create"]
   end
-
 
 end

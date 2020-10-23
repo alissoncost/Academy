@@ -1,6 +1,6 @@
 
 Quando('entro para efetuar meu cadastro') do
-    @cadastro.access_create_account
+  @cadastro.access_create_account
 end
 
 Quando('preencho os campos solicitados') do

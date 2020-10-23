@@ -1,6 +1,6 @@
 
 Dado('que estou navegando na {string}') do |url|
-  @nav.visits(url)
+  @nav.visit_url(url)
 end
 
 Dado('realizo acesso com {string} e {string}') do |user, pass|

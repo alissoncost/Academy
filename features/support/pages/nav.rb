@@ -1,7 +1,7 @@
 class Nav
     include Capybara::DSL
     
-    def visits(url)
+    def visit_url(url)
         url = DATA[url]
         p url
         visit(url)
@@ -11,8 +11,8 @@ class Nav
         click_link_or_button 'Sign In'
         user = DATA[user]
         pass = DATA[pass]
-        find("#email").set user
-        find("#pass").set pass
+        find(EL["login"]).set user
+        find(EL["password"]).set pass
         click_button 'Sign In'
         sleep 1
         assert_text 'Veronica Costello', wait: 4
@@ -21,11 +21,11 @@ class Nav
     def add_item_cart(item_search)
         find("#search").set item_search
         click_button 'Search'
-        first(".product-item-link").click
+        first(EL["first_product"]).click
         find("#option-label-size-142-item-168").click
         find("#option-label-color-93-item-52").click
         find("#qty").set 2
-        click_button 'product-addtocart-button'
+        click_button EL["bttn_addcart"]
 
     end
 
@@ -33,7 +33,7 @@ class Nav
         sleep 2
         click_link 'shopping cart'
         sleep 2
-        click_button 'Proceed to Checkout'
+        click_button EL["bttn_checkout"]
     end
 
     def valid_selector
@@ -42,20 +42,20 @@ class Nav
 
     def valid_address_on
         first(".radio").click
-        click_button 'Next'
+        click_button EL["bttn_next"]
     end
 
     def valid_address_off
-        find(:xpath,"//input[@name='street[0]']").set FFaker::AddressIN.street_address
-        find(:xpath,"//input[@name='city']").set FFaker::AddressIN.city
-        find(:xpath,"//select[@name='region_id']").click
+        find(:xpath,EL["street"]).set FFaker::AddressIN.street_address
+        find(:xpath,EL["city"]).set FFaker::AddressIN.city
+        find(:xpath,EL["region"]).click
         select 'Arizona'
-        find(:xpath,"//input[@name='postcode']").set FFaker::AddressIN.zip_code
-        find(:xpath,"//select[@name='country_id']").click
+        find(:xpath,EL["postcode"]).set FFaker::AddressIN.zip_code
+        find(:xpath,EL["country"]).click
         select 'United States'
-        find(:xpath,"//input[@name='telephone']").set FFaker::PhoneNumberAU.international_mobile_phone_number
+        find(:xpath,EL["phone"]).set FFaker::PhoneNumberAU.international_mobile_phone_number
         first(".radio").click
-        click_button 'Next'
+        click_button EL["bttn_next"]
     end
 
 end
