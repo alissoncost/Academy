@@ -1,0 +1,125 @@
+[
+  {
+    "uri": "features/Fixtures/FRONT/cadastro.feature",
+    "id": "efetuar-um-cadastro-na-pagina",
+    "keyword": "Funcionalidade",
+    "name": "Efetuar um cadastro na pagina",
+    "description": "",
+    "line": 2,
+    "elements": [
+      {
+        "id": "efetuar-um-cadastro-na-pagina;cadastro-para-acesso",
+        "keyword": "Cenario",
+        "name": "Cadastro para acesso",
+        "description": "",
+        "line": 4,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@cad",
+            "line": 3
+          }
+        ],
+        "before": [
+          {
+            "match": {
+              "location": "capybara-3.33.0/lib/capybara/cucumber.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43185
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-3.33.0/lib/capybara/cucumber.rb:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24749
+            }
+          },
+          {
+            "match": {
+              "location": "features/support/hooks.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 806515731
+            }
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Dado ",
+            "name": "que estou navegando na 'URL'",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/e2e.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6989562021
+            }
+          },
+          {
+            "keyword": "Quando ",
+            "name": "entro para efetuar meu cadastro",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/cadastro.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1826864110
+            }
+          },
+          {
+            "keyword": "E ",
+            "name": "preencho os campos solicitados",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/cadastro.rb:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3862107801
+            }
+          },
+          {
+            "keyword": "Então ",
+            "name": "devo ver minha conta logada",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/cadastro.rb:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 705578522
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/hooks.rb:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25041
+            }
+          },
+          {
+            "match": {
+              "location": "capybara-3.33.0/lib/capybara/cucumber.rb:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 81511352
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
