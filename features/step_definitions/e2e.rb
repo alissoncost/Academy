@@ -33,8 +33,7 @@ Quando('finalizo a compra') do
   click_button 'Place Order', wait: 6
 end
 
-
-Então('vejo meu numero de pedido') do
+Entao('vejo meu numero de pedido') do
   @nav.valid_selector
   assert_text 'Thank you for your purchase!', wait: 4
 end

@@ -1,7 +1,8 @@
 
 default:  -p format-default -p report-html -p report-json
 parallel: -p format-default -p report-html-parallel -p report-json-parallel
-qa-local: QA=true chrome=true report=true  -p default screenshot=true
+qa-local: QA=true chrome=true report=true  -p default screenshot=true headless=true
+jenkins: QA=true -p default chrome_headless=true screeshot=true
 #-p = Profile
 format-default: --no-source --color --format pretty
 report-html:    --format html --out=data/report/report.html
