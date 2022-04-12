@@ -58,11 +58,12 @@ GEM
     method_source (1.0.0)
     middleware (0.1.0)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.8.0)
     minitest (5.14.1)
     multi_test (0.1.2)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.13.4)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     parallel (1.19.2)
     parallel_tests (3.0.0)
       parallel
@@ -80,6 +81,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.5)
+    racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -122,7 +124,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  cucumber
+  cucumber (= 3.1.2)
   ffaker
   parallel_tests
   png_quantizator
